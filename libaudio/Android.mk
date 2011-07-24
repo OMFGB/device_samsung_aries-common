@@ -1,4 +1,6 @@
 ifneq ($(TARGET_DEVICE),fascinatemtd)
+ifneq ($(TARGET_DEVICE),mesmerizemtd)
+ifneq ($(TARGET_DEVICE),showcasemtd)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -54,4 +56,6 @@ ifeq ($(BOARD_HAVE_BLUETOOTH),true)
 endif
 include $(BUILD_SHARED_LIBRARY)
 
+endif
+endif
 endif
