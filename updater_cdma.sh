@@ -20,7 +20,7 @@ if /tmp/busybox test -e /dev/block/bml7 ; then
             /tmp/busybox echo "Cannot mount sdcard."
             exit 1
         fi
-    fi
+fi
 
     # remove old log
     rm -rf /mnt/sdcard/cyanogenmod_bml.log
@@ -30,7 +30,7 @@ if /tmp/busybox test -e /dev/block/bml7 ; then
 
     # write the package path to sdcard cyanogenmod.cfg
     if /tmp/busybox test -n "$UPDATE_PACKAGE" ; then
-        PACKAGE_LOCATION=${UPDATE_PACKAGE#/mnt}
+PACKAGE_LOCATION=${UPDATE_PACKAGE#/mnt}
         /tmp/busybox echo "$PACKAGE_LOCATION" > /mnt/sdcard/cyanogenmod.cfg
     fi
 
@@ -40,7 +40,7 @@ if /tmp/busybox test -e /dev/block/bml7 ; then
     # write new kernel to boot partition
     /tmp/flash_image boot /tmp/boot.img
     if [ "$?" != "0" ] ; then
-        exit 3
+exit 3
     fi
     /tmp/busybox sync
 
@@ -59,7 +59,7 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
             /tmp/busybox echo "Cannot mount sdcard."
             exit 4
         fi
-    fi
+fi
 
     # remove old log
     rm -rf /sdcard/cyanogenmod_mtd.log
@@ -70,9 +70,9 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
     # if a cyanogenmod.cfg exists, then this is a first time install
     # let's format the volumes and restore radio and efs
     if ! /tmp/busybox test -e /sdcard/cyanogenmod.cfg ; then
-        exit 0
+exit 0
     fi
-	
+
     # remove the cyanogenmod.cfg to prevent this from looping
     /tmp/busybox rm -f /sdcard/cyanogenmod.cfg
 
@@ -102,4 +102,3 @@ elif /tmp/busybox test -e /dev/block/mtdblock0 ; then
 
     exit 0
 fi
-
