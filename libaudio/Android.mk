@@ -1,6 +1,5 @@
-ifneq ($(TARGET_PROVIDES_LIBAUDIO),true)
-
 LOCAL_PATH:= $(call my-dir)
+
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= aplay.c alsa_pcm.c alsa_mixer.c
@@ -32,10 +31,6 @@ ifeq ($(BOARD_HAVE_BLUETOOTH),true)
   LOCAL_SHARED_LIBRARIES += liba2dp
 endif
 
-ifeq ($(BOARD_HAVE_FM_RADIO),true)
-  LOCAL_CFLAGS += -DHAVE_FM_RADIO
-endif
-
 ifeq ($(TARGET_SIMULATOR),true)
  LOCAL_LDLIBS += -ldl
 else
@@ -54,4 +49,3 @@ ifeq ($(BOARD_HAVE_BLUETOOTH),true)
 endif
 include $(BUILD_SHARED_LIBRARY)
 
-endif
