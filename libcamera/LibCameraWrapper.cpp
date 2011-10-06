@@ -105,10 +105,7 @@ LibCameraWrapper::LibCameraWrapper(int cameraId) :
     mCameraId(cameraId),
     mVideoMode(false),
     mContinuousAf(false),
-<<<<<<< HEAD
     mFixFocus(false),
-=======
->>>>>>> 3acca60ace7fe5190b106809a8e255ce2757143e
     mTouchFocus(false)
 {
     LOGV("%s :", __func__);
@@ -168,7 +165,6 @@ status_t
 LibCameraWrapper::startPreview()
 {
     LOGV("%s :", __func__);
-<<<<<<< HEAD
     status_t ret = mLibInterface->startPreview();
 
     if (mFixFocus) {
@@ -185,9 +181,6 @@ LibCameraWrapper::startPreview()
     }
 
     return ret;
-=======
-    return mLibInterface->startPreview();
->>>>>>> 3acca60ace7fe5190b106809a8e255ce2757143e
 }
 
 bool
@@ -284,10 +277,7 @@ LibCameraWrapper::setParameters(const CameraParameters& params)
         const char *metering;
         const char *conAf;
         const char *touchCoordinate;
-<<<<<<< HEAD
         bool prevContinuousAf;
-=======
->>>>>>> 3acca60ace7fe5190b106809a8e255ce2757143e
 
         /*
          * getInt returns -1 if the value isn't present and 0 on parse failure,
@@ -308,7 +298,6 @@ LibCameraWrapper::setParameters(const CameraParameters& params)
             pars.set("slow_ae", "off");
         }
 
-<<<<<<< HEAD
         // Parse continuous autofocus into a format the driver understands
         conAf = pars.get("enable-caf");
         prevContinuousAf = mContinuousAf;
@@ -319,13 +308,6 @@ LibCameraWrapper::setParameters(const CameraParameters& params)
             mFixFocus = true;
         }
 
-=======
-        // Parse continuous autofoucs into a format the driver understands
-        conAf = pars.get("enable-caf");
-        mContinuousAf = (conAf != 0 && strcmp(conAf, "on") == 0);
-        pars.set("continuous_af", mContinuousAf ? 1 : 0);
-
->>>>>>> 3acca60ace7fe5190b106809a8e255ce2757143e
         // Always set antibanding to 50hz
         pars.set("antibanding", "50hz");
 
@@ -341,11 +323,7 @@ LibCameraWrapper::setParameters(const CameraParameters& params)
             else if (strcmp(metering, "meter-matrix") == 0) {
                 pars.set("metering", "matrix");
             }
-<<<<<<< HEAD
             pars.remove("meter-mode");
-=======
-            pars.remove("auto-exposure");
->>>>>>> 3acca60ace7fe5190b106809a8e255ce2757143e
         }
 
         // Read touch-to-focus
