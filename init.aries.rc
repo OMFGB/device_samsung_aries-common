@@ -16,7 +16,7 @@ on boot
     setprop ro.build.product aries
     setprop ro.product.device aries
     setprop ro.radio.noril yes
-    
+
 # fake some battery state
     setprop status.battery.state Slow
     setprop status.battery.level 5
